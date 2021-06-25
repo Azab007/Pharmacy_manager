@@ -1,0 +1,47 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/stylesheets/new.css" >
+<body>
+
+  <%- include('includes/sidebar.ejs') %>
+
+
+  <%- include('includes/topnav.ejs') %>
+
+
+  <% if (Message) { %>
+    <div class="alert <%= Message == 'Accepted' ? 'green' : '' %>" >
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong><%= Message %></strong>
+    </div>
+    <% } %>
+          <div class="content">
+            <h3>Add a new medicine</h3>
+            <div id="form1">
+              <form action="/new" method ="POST">
+                <label for="barcode">Barcode</label>
+                <input type="text" id="barcode" name="barcode" placeholder="barcode.." required>
+
+                <label for="drugname">Drug Name</label>
+                <input type="text" id="drugname" name="drugname" placeholder="Drug Name.." required>
+            
+                <label for="drugcategory">Drug Category</label>
+                <input type="text" id="drugcategory" name="drugcategory" placeholder="Drug Category.." required>
+            
+                <label for="drugprice">Drug Price</label>
+                <input type="text" id="drugprice" name="drugprice" placeholder="Drug Price.." required>
+
+                <label for="quantity">Quantity</label>
+                <input type="text" id="quantity" name="quantity" placeholder="quantity.." required>
+              
+                <input id="submit" type="submit" value="Submit">
+              </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

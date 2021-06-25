@@ -1,0 +1,150 @@
+
+<%- include('includes/head.ejs') %>
+<body>
+
+
+    <%- include('includes/sidebar.ejs') %>
+
+
+      <%- include('includes/topnav.ejs') %>
+      <% if (errorMsg) { %>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong><%= errorMsg %></strong>
+      </div>
+      <% } %>
+          <div class="content">
+            <h3 style="text-align: center;">Search by Name</h3>
+          <form class="example" action="/home" method="POST" style="margin:auto;max-width: 455px;display: flex;">
+            <select  name="search_type" style = "margin-right: 3px;" >
+              <option value="drug">drug</option>
+              <option value="bill">bill</option>
+            </select>
+            <input type="text" placeholder="Search.." name="search" required>
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+
+
+
+
+
+
+          <% if (!edit && search_type != "bill") { %>
+
+            <table id="customers">
+              
+              <% rows.forEach((row)=>{ %>
+                  <tr>
+                    <th>Barcode</th>
+                    <th>Drug name</th>
+                    <th>Drug category</th>
+                    <th>Drug price</th>
+                    <th>Quantity</th>
+                    <% if (isLogged) {%><th style="text-align: center;">Actions</th> <% }%>
+                  </tr>
+                  <tr>
+                    <td> <%= row.sno %>  </td>
+                    <td> <%= row.name %> </td>
+                    <td> <%= row.cat %> </td>
+                    <td> <%= row.price %> </td>
+                    <td> <%= row.qty %> </td>
+                   <% if (isLogged) {%><td style="width: 205px; padding: 0; margin: 0;">
+                    <form style="display: inline-block;" method="POST" action="/home/edit">
+                      <button class="btn1" type="submit">Edit </button>
+                    </form> 
+                  
+                  
+                    <form style="display: inline-block;" method="POST" action="/home/delete">
+                      <input hidden name="deleted" value="<%= row.sno%>">
+                      <button class="btn2" type="submit">Delete </button>
+                    </form>
+                  
+                  
+                  </td> <% }%>
+                  </tr>
+                
+              </table>
+              <% }) %>
+
+              <% } %>
+
+
+
+
+          
+              <% if (edit && search_type != "bill") { %>
+
+                <table id="customers">
+                  
+                  <% rows.forEach((row)=>{ %>
+                      <tr>
+                        <th>Barcode</th>
+                        <th>Drug name</th>
+                        <th>Drug category</th>
+                        <th>Drug price</th>
+                        <th>Quantity</th>
+                        <% if (isLogged) {%><th style="text-align: center;">Actions</th> <% }%>
+                      </tr>
+                      <tr>
+                        <form  method="POST" action="/home/save">
+                          <td> <%= row.sno %>  </td>
+                        <td> <input class="edit" type="text" name="name" value="<%= row.name %>">  </td>
+                        <td> <input class="edit" type="text" name="cat" value="<%= row.cat %>">  </td>
+                        <td> <input class="edit" type="text" name="price" value="<%= row.price %>">  </td>
+                        <td> <input class="edit" type="text" name="qty" value="<%= row.qty %>">  </td>
+                        <% if (isLogged) {%><td >
+                          <button class="btn3" type="submit">Save</button>
+                        </form> 
+                      
+                      
+                      </td> <% }%>
+                      </tr>
+                    
+                  </table>
+                  <% }) %>
+    
+                  <% } %>
+
+
+                  <% if (search_type === "bill") { %>
+                    <% if (bill_rows.length >0) { %>
+                    <table id="customers">
+                      <tr>
+                        <th>Drug name</th>
+                        <th>Quantity</th>
+                        <th>Total price</th>
+                        <th>Bill ID</th>
+                        <th>Date</th>
+                        
+                      </tr>
+                      <% bill_rows.forEach((row)=>{ %>
+
+                          <tr>
+                            <td> <%= row.name %>  </td>
+                            <td> <%= row.qty %> </td>
+                            <td> <%= row.price %> </td>
+                            <td> <%= row.id %> </td>
+                            <td> <%= row.date %> </td>
+
+                          </tr>
+                        
+                      
+                      <% }) %>
+                    </table>
+                    <% } %>
+                      <% } %>
+        
+        
+        
+        
+
+          </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

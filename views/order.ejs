@@ -1,0 +1,66 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/stylesheets/order.css">
+<body>
+
+  <%- include('includes/sidebar.ejs') %>
+
+
+  <%- include('includes/topnav.ejs') %>
+
+  <% if (Message) { %>
+    <div class="alert <%= Message == 'Accepted' ? 'green' : '' %>" >
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong><%= Message %></strong>
+    </div>
+    <% } %>
+          <div class="content">
+            <h3 style="text-align: center; margin-right: 70px;">Add by Barcode and quantity</h3>
+          <form  action="/order" method="POST" style="margin:auto;max-width:300px">
+            <input class="input" type="text" placeholder="Barcode.." name="barcode" required>
+            <input class="input" type="text" placeholder="Quantity" name="qty" required>
+            <button class="btn1" type="submit">Add </button>
+          </form>
+      
+
+            <div class="container">
+              <div style="display: flex;" >
+                <h4 style = "flex-basis: 650px;" >Cart</h4>
+                <h4 style = "flex-basis: 200px;"> <span style="color:black; " >Quantity</span> </h4>
+                <h4 style = "flex-basis: 200px;">
+                  <span class="price" style="color:black">
+                    <i class="fa fa-shopping-cart"></i> 
+                    <b><%= products.length %></b>
+                  </span>
+                </h4>
+              </div>
+              
+              <% products.forEach((p)=>{ %>
+                <div style="display: flex;" >
+                  <p style="flex-basis: 250px; overflow: hidden; max-width: 250px; max-height: 20px;" > <%= p.name %> </p>
+                  <form method="GET" action="/order/delete/<%=p.name%>" style="flex-basis: 20px; margin-top:auto; margin-bottom: auto;">  <button style="border: none; background-color: transparent; cursor: pointer;"> <img src="/images/Cancel.svg" style="width:10px ;"> </button> </form>
+                  <span style="flex-basis: 20px; margin:auto;" ><%= p.qty %></span> 
+                  <span class="price" style="flex-basis: 20px; margin-top:auto; margin-bottom: auto;">$<%= p.price %></span>
+                </div>
+                <% }) %>
+                
+            
+              <hr>
+              <p>Total <span class="price" style="color:black"><b>$<%= total %></b></span></p>
+            </div>
+
+              <form action="/order/checkout" method="POST" style="margin:auto;max-width:700px">
+                <button type="submit" class="btn">Checkout</button>
+              </form>
+
+              <form action="/order/cancel" method="POST" style="margin:auto;max-width:700px">
+                <button type="submit" class="btn2">Cancel</button>
+              </form>
+          </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

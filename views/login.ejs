@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+
+<link rel="stylesheet" href="/stylesheets/login.css" >
+
+<body>
+
+  <%- include('includes/sidebar.ejs') %>
+
+
+  <%- include('includes/topnav.ejs') %>
+  <% if (errorMsg) { %>
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong><%= errorMsg %></strong>
+    </div>
+    <% } %>
+          <div class="content">
+          <div class="form">
+            <form action="/login" method="post">
+                <div class="imgcontainer">
+                  <img src="/images/avatar.png" alt="Avatar" class="avatar">
+                </div>
+              
+                <div class="container">
+                  <label for="uname"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" name="uname" required>
+              
+                  <label for="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" required>
+                      
+                  <button class="btn" type="submit">Login</button>
+                </div>
+              
+              </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

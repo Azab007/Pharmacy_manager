@@ -1,0 +1,17 @@
+<div class="sidebar" id="side">
+    <button href="javascript:void(0)" class="close" onclick="closeNav()">×</button>
+    <p>Pharmacy</p>
+    <a class="<%= path === '/home' ? 'active' : '' %>" href="home">Home</a>
+    <% if (!isLogged) { %>
+        <a class="<%= path === '/login' ? 'active' : '' %>"  href="login" >Login</a>
+            <% } %>
+        
+        <% if (isLogged) { %>
+            <a class="<%= path === '/new' ? 'active' : '' %>"  href="new">Add medicine</a>
+            <% } %>
+
+            <% if (isLogged) { %>
+                <a class="<%= path === '/order' ? 'active' : '' %>"  href="order">Order</a>
+                <% } %>
+    
+</div>

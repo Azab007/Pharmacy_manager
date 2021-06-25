@@ -1,0 +1,89 @@
+.container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    margin: 50px;
+
+  }
+
+  a {
+    color: #2196F3;
+  }
+  
+  hr {
+    border: 1px solid lightgrey;
+  }
+  
+  span.price {
+    float: right;
+    color: grey;
+  }
+
+  span.qty {
+      padding-left: 500px;
+      color: grey;
+  }
+
+
+  .btn {
+    background-color: #0a1931;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+
+
+  .btn:hover, .btn1:hover {
+    background-color: #185adb;
+  }
+
+  .input {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 70%;
+    background: #f1f1f1;
+  }
+
+  .btn1 {
+    background-color: #0a1931;
+    color: white;
+    padding: 12px;
+    margin: 35px 0;
+    border: none;
+    width: 232px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+
+  .red {
+    color: red;
+  }
+
+
+  .btn2 {
+    background-color: red;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+
+
+  .btn2:hover {
+    background-color: rgb(236, 157, 157);
+  }

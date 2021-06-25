@@ -1,0 +1,14 @@
+<div class="main" id="main1">
+    <div class="topnav">
+        <button id="openNav" onclick="openNav()"><i class="fa fa-bars"></i></button>
+      
+        <div class="dropdown">
+            <% if (isLogged) { %>
+                <button class="dropbtn"><%= name %>▼</button>
+                <% } %>
+            
+            <div class="dropdown-content">
+            <form action="/home/logout" method="POST"> <a><button style="font-size: 20px; border: none; background-color: inherit; cursor: pointer;" type="submit" >Logout</button></a></form>
+            </div>
+          </div>
+      </div>
